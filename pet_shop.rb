@@ -13,3 +13,11 @@ end
 def pets_sold(shop)
   return shop[:admin][:pets_sold]
 end
+
+def increase_pets_sold(shop, pets)
+  shop[:admin][:pets_sold] = shop[:admin][:pets_sold] + pets
+end
+
+def stock_count(count)
+  count[:pets].size
+end
