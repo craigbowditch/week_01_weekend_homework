@@ -32,11 +32,11 @@ def pets_by_breed(shop, breed)
   return pets
 end
 
-def find_pet_by_name(shop, pet_name)
+def find_pet_by_name(shop, name)
   pets = []
   for pet in shop[:pets]
-    if pet[:name] == pet_name
-      pets.push(name)
+    if pet[:name] == name
+      pets.push(pet)
     end
   end
   return pets[0]
@@ -48,4 +48,8 @@ def remove_pet_by_name(shop, name)
     pet.delete(:name)
     end
   end
+end
+
+def add_pet_to_stock(shop, pet)
+  shop[:pets].push(pet)
 end
