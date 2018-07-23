@@ -24,9 +24,9 @@ end
 
 def pets_by_breed(shop, breed)
   pets = []
-  for type_of_cat in shop[:pets]
-    if type_of_cat[:breed] == breed
-      pets.push(type_of_cat)
+  for pet in shop[:pets]
+    if pet[:breed] == breed
+      pets.push(pet)
     end
   end
   return pets
@@ -55,7 +55,7 @@ def add_pet_to_stock(shop, pet)
 end
 
 def customer_cash(customer)
-  customer[:cash]
+   return customer[:cash]
 end
 
 def remove_customer_cash(customer, amount)
@@ -72,4 +72,13 @@ end
 
 def customer_can_afford_pet(customer, pet)
   customer[:cash] >= pet[:price]
+end
+
+def sell_pet_to_customer(shop, pet, customer)
+  if pet != nil && customer_can_afford_pet(customer, pet)
+    add_pet_to_customer(customer, pet)
+    increase_pets_sold(shop, 1)
+    remove_customer_cash(customer, pet[:price])
+    add_or_remove_cash(shop, pet[:price])
+  end
 end
